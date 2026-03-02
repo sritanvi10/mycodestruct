@@ -2,35 +2,55 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Code2, Terminal, Cpu, Zap, ChevronLeft } from "lucide-react";
+import { ArrowLeft, Code2, Terminal, Cpu, Zap, ChevronLeft, ArrowRight } from "lucide-react";
 
 export default function CppRoadmap() {
   const steps = [
     {
       title: "Phase 1: Basics & Foundation",
-      items: ["Variables & Data Types", "Input/Output (cin/cout)", "Operators & Expressions", "Control Flow (If/Else, Loops)"],
-      icon: <Terminal className="w-6 h-6 text-red-500" />
+      icon: <Terminal className="w-6 h-6 text-red-500" />,
+      items: [
+        { label: "Variables & Data Types", slug: "variables" },
+        { label: "Input/Output (cin/cout)", slug: "io" },
+        { label: "Operators & Expressions", slug: "operators" },
+        { label: "Control Flow (If/Else, Loops)", slug: "control-flow" },
+      ],
     },
     {
       title: "Phase 2: Functional Logic",
-      items: ["Functions & Parameters", "Recursion", "Arrays & Strings", "References & Basic Pointers"],
-      icon: <Code2 className="w-6 h-6 text-red-500" />
+      icon: <Code2 className="w-6 h-6 text-red-500" />,
+      items: [
+        { label: "Functions & Parameters", slug: "functions" },
+        { label: "Recursion", slug: "recursion" },
+        { label: "Arrays & Strings", slug: "arrays-strings" },
+        { label: "References & Basic Pointers", slug: "pointers" },
+      ],
     },
     {
       title: "Phase 3: Standard Template Library(STL)",
-      items: ["Vectors & Iterators", "Maps & Sets", "Pairs & Tuples", "Sorting Algorithms"],
-      icon: <Zap className="w-6 h-6 text-red-500" />
+      icon: <Zap className="w-6 h-6 text-red-500" />,
+      items: [
+        { label: "Vectors & Iterators", slug: "vectors" },
+        { label: "Maps & Sets", slug: "maps-sets" },
+        { label: "Pairs & Tuples", slug: "pairs" },
+        { label: "Sorting Algorithms", slug: "sorting" },
+      ],
     },
     {
       title: "Phase 4: Advanced Concepts",
-      items: ["Object Oriented Programming", "Memory Management", "Templates", "File Handling"],
-      icon: <Cpu className="w-6 h-6 text-red-500" />
-    }
+      icon: <Cpu className="w-6 h-6 text-red-500" />,
+      items: [
+        { label: "Object Oriented Programming", slug: "oop" },
+        { label: "Memory Management", slug: "memory" },
+        { label: "Templates", slug: "templates" },
+        { label: "File Handling", slug: "file-handling" },
+      ],
+    },
   ];
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-red-500/30 overflow-x-hidden relative">
-      {/* Background Ambient Glow */}
+      {/* Brand Header */}
       <Link href="/">
         <motion.div
           className="absolute top-8 left-8 z-50 flex items-center gap-2 cursor-pointer group"
@@ -41,10 +61,12 @@ export default function CppRoadmap() {
           </span>
         </motion.div>
       </Link>
+
+      {/* Background Ambient Glow */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-red-900/10 blur-[120px] -z-10" />
 
       <main className="max-w-4xl mx-auto px-6 pt-20 pb-32">
-        {/* Header Section */}
+        {/* Navigation Section */}
         <Link 
           href="/languageoptions" 
           className="group flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mb-12 text-xs uppercase font-bold tracking-[0.2em]"
@@ -52,6 +74,7 @@ export default function CppRoadmap() {
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to Languages
         </Link>
 
+        {/* Hero Section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }} 
           animate={{ opacity: 1, y: 0 }}
@@ -64,9 +87,11 @@ export default function CppRoadmap() {
             The gold standard for Competitive Programming. This structured path takes you from 
             basic syntax to mastering the Standard Template Library (STL).
           </p>
-          <button className="mt-8 px-8 py-3 bg-red-600 rounded-full font-bold cursor-pointer hover:scale-105 transition-transform">
-            Start Your Journey
-          </button>
+          <a href="/langroadmap/cpp/variables">
+            <button className="mt-8 px-8 py-3 bg-red-600 rounded-full font-bold cursor-pointer hover:scale-105 transition-transform">
+              Start Your Journey
+            </button>
+          </a>
         </motion.div>
 
         {/* Roadmap Timeline */}
@@ -90,14 +115,17 @@ export default function CppRoadmap() {
                 <h3 className="text-2xl font-bold uppercase tracking-tight">{step.title}</h3>
               </div>
 
+              {/* Grid of Lesson Links */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {step.items.map((item, i) => (
-                  <div 
+                  <Link 
                     key={i} 
-                    className="p-4 bg-neutral-950 border border-neutral-900 rounded-xl cursor-pointer text-neutral-400 hover:text-white hover:border-red-900/50 transition-all cursor-default"
+                    href={`/langroadmap/cpp/${item.slug}`}
+                    className="p-4 bg-neutral-950 border border-neutral-900 rounded-xl text-neutral-400 hover:text-white hover:border-red-900/50 transition-all cursor-pointer group/item flex justify-between items-center"
                   >
-                    {item}
-                  </div>
+                    <span className="font-medium">{item.label}</span>
+                    <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-red-600" />
+                  </Link>
                 ))}
               </div>
             </motion.div>
