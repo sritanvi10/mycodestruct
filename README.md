@@ -27,5 +27,8 @@ CodeStruct isn't just a tracker; it's a centralized command center for developer
 ```bash
 git clone <your-repo-link>
 cd codestruct
+code .
 npm install
 npm run dev
+
+
