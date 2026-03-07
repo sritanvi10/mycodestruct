@@ -12,6 +12,7 @@ CodeStruct isn't just a tracker; it's a centralized command center for developer
 * **Styling:** Tailwind CSS + CSS Modules
 * **Icons:** [Lucide React](https://lucide.dev/)
 * **Backend:** Node.js / Railway (External)
+* **Database:** Supabase
 
 ---
 
