@@ -1,28 +1,51 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { ArrowUp, ArrowRight, ArrowLeft, ChevronLeft } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, ArrowLeft, ExternalLink, Terminal, ChevronLeft } from "lucide-react";
 
 export default function VariablesLesson() {
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowTopBtn(true);
+      } else {
+        setShowTopBtn(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#e5e7eb] pb-20 font-sans">
       <main className="max-w-6xl mx-auto px-6 pt-16">
         {/* Direct Home Navigation - Consistent with Register Page */}
         <Link href="/">
-            <motion.div
+          <motion.div
             className="absolute top-8 left-8 z-50 flex items-center gap-2 cursor-pointer group"
-            >
-            <ChevronLeft className="w-4 h-4 text-red-600"/>
+          >
+            <ChevronLeft className="w-4 h-4 text-red-600" />
             <span className="text-xl font-black tracking-tighter text-red-600 uppercase">
-                CodeStruct_
+              CodeStruct_
             </span>
-            </motion.div>
+          </motion.div>
         </Link>
 
         {/* Navigation */}
-        <Link 
-          href="/langroadmap/cpp" 
+        <Link
+          href="/langroadmap/cpp"
           className="flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mt-10 mb-10 text-sm"
         >
           <ArrowLeft className="w-4 h-4" /> Back to C++ Roadmap
@@ -64,7 +87,7 @@ export default function VariablesLesson() {
             <p className="text-neutral-300 mb-6 text-[17px]">
               Data types specify the nature of data a variable can store. In C++, these are broadly classified into three categories:
             </p>
-            
+
             <div className="overflow-x-auto rounded-lg border border-neutral-800 mb-8">
               <table className="w-full text-left text-sm">
                 <thead className="bg-[#111] text-neutral-400 uppercase text-[11px] tracking-widest border-b border-neutral-800">
@@ -109,21 +132,21 @@ export default function VariablesLesson() {
               <li><strong className="text-red-500">void:</strong> Represents the absence of a value; primarily used in function return types.</li>
               <li><strong className="text-red-500">bool:</strong> Stores a boolean value (true or false). (e.g., <code className="text-blue-300">bool isHappy = true;</code>)</li>
 
-              <p><strong>Point to Note: <br/>So, you might get the doubt that "Why even use int/short when we can just always use long long because it covers more numbers that we can use?"</strong>. <br/>Before understanding why, let's understand how much memory space is being used when these data types are used:</p>
+              <p><strong>Point to Note: <br />So, you might get the doubt that "Why even use int/short when we can just always use long long because it covers more numbers that we can use?"</strong>. <br />Before understanding why, let's understand how much memory space is being used when these data types are used:</p>
               <ul className="space-y-4 text-neutral-300 list-disc ml-6 text-[17px] mt-4">
-                    <li><strong className="text-red-500">int:</strong> Uses 4 bytes (32 bits) of memory.</li>
-                    <li><strong className="text-red-500">short:</strong> Uses 2 bytes (16 bits) of memory.</li>
-                    <li><strong className="text-red-500">long:</strong> Usually uses 4 or 8 bytes (depends on the operating system).</li>
-                    <li><strong className="text-red-500">long long:</strong> Uses 8 bytes (64 bits) of memory.</li>
-                    <li><strong className="text-red-500">float:</strong> Uses 4 bytes (32 bits) of memory.</li>
-                    <li><strong className="text-red-500">double:</strong> Uses 8 bytes (64 bits) of memory.</li>
-                    <li><strong className="text-red-500">char:</strong> Uses 1 byte (8 bits) of memory.</li>
-                    <li><strong className="text-red-500">void:</strong> Does not occupy memory space.</li>
-                    <li><strong className="text-red-500">bool:</strong> Uses 1 byte (8 bits) of memory.</li>
-                  </ul>
-                  <br/>
-                  So, if we use <code className="text-blue-300">long long</code> for every integer variable, we would be using 8 bytes of memory for each variable, even if we only need to store a small number that could fit in an <code className="text-blue-300">int</code> (which uses only 4 bytes). <br/>Imagine using long long for a number like 7(like <code className="text-blue-300">long long num = 7;</code>), you're wasting so much memory space of long long when you could have just used int/short for numbers that small like 7, 10, 10,000 etc. <br/>This can lead to inefficient memory usage, especially in large programs or when dealing with many variables. <br/><br/><strong>So as good programmers, we always use the appropriate data type based on the expected range of values, we can optimize memory usage and improve the performance of our programs.</strong>
+                <li><strong className="text-red-500">int:</strong> Uses 4 bytes (32 bits) of memory.</li>
+                <li><strong className="text-red-500">short:</strong> Uses 2 bytes (16 bits) of memory.</li>
+                <li><strong className="text-red-500">long:</strong> Usually uses 4 or 8 bytes (depends on the operating system).</li>
+                <li><strong className="text-red-500">long long:</strong> Uses 8 bytes (64 bits) of memory.</li>
+                <li><strong className="text-red-500">float:</strong> Uses 4 bytes (32 bits) of memory.</li>
+                <li><strong className="text-red-500">double:</strong> Uses 8 bytes (64 bits) of memory.</li>
+                <li><strong className="text-red-500">char:</strong> Uses 1 byte (8 bits) of memory.</li>
+                <li><strong className="text-red-500">void:</strong> Does not occupy memory space.</li>
+                <li><strong className="text-red-500">bool:</strong> Uses 1 byte (8 bits) of memory.</li>
               </ul>
+              <br />
+              So, if we use <code className="text-blue-300">long long</code> for every integer variable, we would be using 8 bytes of memory for each variable, even if we only need to store a small number that could fit in an <code className="text-blue-300">int</code> (which uses only 4 bytes). <br />Imagine using long long for a number like 7(like <code className="text-blue-300">long long num = 7;</code>), you're wasting so much memory space of long long when you could have just used int/short for numbers that small like 7, 10, 10,000 etc. <br />This can lead to inefficient memory usage, especially in large programs or when dealing with many variables. <br /><br /><strong>So as good programmers, we always use the appropriate data type based on the expected range of values, we can optimize memory usage and improve the performance of our programs.</strong>
+            </ul>
           </section>
 
           {/* Section 4: Derived & User Defined */}
@@ -132,7 +155,7 @@ export default function VariablesLesson() {
               <h2 className="text-2xl font-semibold text-white mb-4">2. Derived Types</h2>
               <p className="text-neutral-400 text-sm mb-4 leading-6">Derived from primitives to handle complex structures like collections or memory addresses. <span className="text-red-500 font-bold italic">(You'll learn more about this in future phases)</span>.</p>
               <div className="bg-[#111] border border-neutral-800 rounded-lg p-5 font-mono text-1xl leading-6">
-                <span className="text-red-500 font-bold">int</span> arr[<span className="text-blue-400">5</span>]; <span className="text-neutral-500">// Array</span><br/>
+                <span className="text-red-500 font-bold">int</span> arr[<span className="text-blue-400">5</span>]; <span className="text-neutral-500">// Array</span><br />
                 <span className="text-red-500 font-bold">int</span> *ptr; <span className="text-neutral-500">// Pointer</span>
               </div>
             </div>
@@ -140,9 +163,9 @@ export default function VariablesLesson() {
               <h2 className="text-2xl font-semibold text-white mb-4">3. User Defined</h2>
               <p className="text-neutral-400 text-sm mb-4 leading-6">Custom structures defined by the programmer to model real-world entities. <span className="text-red-500 font-bold italic">(You'll learn more about this in future phases)</span>.</p>
               <div className="bg-[#111] border border-neutral-800 rounded-lg p-5 font-mono text-1xl leading-6">
-                <span className="text-red-500 font-bold">struct</span> Student &#123;<br/>
-                &nbsp;&nbsp;<span className="text-red-500">int</span> id;<br/>
-                &nbsp;&nbsp;<span className="text-red-500">char</span> name[<span className="text-blue-400">20</span>];<br/>
+                <span className="text-red-500 font-bold">struct</span> Student &#123;<br />
+                &nbsp;&nbsp;<span className="text-red-500">int</span> id;<br />
+                &nbsp;&nbsp;<span className="text-red-500">char</span> name[<span className="text-blue-400">20</span>];<br />
                 &#125;;
               </div>
             </div>
@@ -151,38 +174,39 @@ export default function VariablesLesson() {
           {/* Section 5: Implementation Example */}
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">Example Implementation</h2>
-            
+
             <div className="bg-black border border-neutral-800 rounded-lg p-6 font-mono text-sm overflow-x-auto leading-7 shadow-2xl">
-              <span className="text-blue-500">#include</span> <span className="text-orange-400">&lt;iostream&gt;</span> <span className="text-neutral-500 pl-4">// Header library to import input and output like cin and cout</span><br/>
-              <span className="text-red-500">using namespace</span> std; <span className="text-neutral-500 pl-4">// Use standard objects (like cout) without prefixing. Without this, we would have to write "std::cout" all the time</span><br/><br/>
-              
-              <span className="text-red-500">int</span> <span className="text-yellow-400">main</span>() &#123; <span className="text-neutral-500 pl-4">// The entry point where program execution begins</span><br/>
-              &nbsp;&nbsp;<span className="text-red-500">int</span> age = <span className="text-blue-400">20</span>;<br/>
-              &nbsp;&nbsp;<span className="text-red-500">float</span> price = <span className="text-blue-400">50.5</span>;<br/>
-              &nbsp;&nbsp;<span className="text-red-500">char</span> grade = <span className="text-blue-400">'A'</span>;<br/>
-              &nbsp;&nbsp;<span className="text-red-500">double</span> salary = <span className="text-blue-400">25000.75</span>;<br/><br/>
-              
-              &nbsp;&nbsp;<span className="text-neutral-500">// Printing values to the console</span><br/>
-              &nbsp;&nbsp;cout &lt;&lt; <span className="text-orange-400">"Age: "</span> &lt;&lt; age &lt;&lt; endl; <span className="text-neutral-500 pl-4">// cout displays text; endl moves to a new line</span><br/>
-              &nbsp;&nbsp;cout &lt;&lt; <span className="text-orange-400">"Price: "</span> &lt;&lt; price &lt;&lt; endl;<br/>
-              &nbsp;&nbsp;cout &lt;&lt; <span className="text-orange-400">"Grade: "</span> &lt;&lt; grade &lt;&lt; endl;<br/>
-              &nbsp;&nbsp;cout &lt;&lt; <span className="text-orange-400">"Salary: "</span> &lt;&lt; salary &lt;&lt; endl;<br/><br/>
-              
-              &nbsp;&nbsp;<span className="text-red-500">return</span> <span className="text-blue-400">0</span>; <span className="text-neutral-500 pl-4">// Signals that the program finished successfully</span><br/>
+              <span className="text-blue-500">#include</span> <span className="text-orange-400">&lt;iostream&gt;</span> <span className="text-neutral-500 pl-4">// Header library to import input and output like cin and cout</span><br />
+              <span className="text-red-500">using namespace</span> std; <span className="text-neutral-500 pl-4">// Use standard objects (like cout) without prefixing. Without this, we would have to write "std::cout" all the time</span><br /><br />
+
+              <span className="text-red-500">int</span> <span className="text-yellow-400">main</span>() &#123; <span className="text-neutral-500 pl-4">// The entry point where program execution begins</span><br />
+              &nbsp;&nbsp;<span className="text-red-500">int</span> age = <span className="text-blue-400">20</span>;<br />
+              &nbsp;&nbsp;<span className="text-red-500">float</span> price = <span className="text-blue-400">50.5</span>;<br />
+              &nbsp;&nbsp;<span className="text-red-500">char</span> grade = <span className="text-blue-400">'A'</span>;<br />
+              &nbsp;&nbsp;<span className="text-red-500">double</span> salary = <span className="text-blue-400">25000.75</span>;<br /><br />
+
+              &nbsp;&nbsp;<span className="text-neutral-500">// Printing values to the console</span><br />
+              &nbsp;&nbsp;cout &lt;&lt; <span className="text-orange-400">"Age: "</span> &lt;&lt; age &lt;&lt; endl; <span className="text-neutral-500 pl-4">// cout displays text; endl moves to a new line</span><br />
+              &nbsp;&nbsp;cout &lt;&lt; <span className="text-orange-400">"Price: "</span> &lt;&lt; price &lt;&lt; endl;<br />
+              &nbsp;&nbsp;cout &lt;&lt; <span className="text-orange-400">"Grade: "</span> &lt;&lt; grade &lt;&lt; endl;<br />
+              &nbsp;&nbsp;cout &lt;&lt; <span className="text-orange-400">"Salary: "</span> &lt;&lt; salary &lt;&lt; endl;<br /><br />
+
+              &nbsp;&nbsp;<span className="text-red-500">return</span> <span className="text-blue-400">0</span>; <span className="text-neutral-500 pl-4">// Signals that the program finished successfully</span><br />
               &#125;
             </div>
 
             <div className="mt-4">
               <h4 className="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-2 ml-1">Output</h4>
               <div className="bg-[#111] border border-neutral-800 rounded-lg p-4 font-mono text-sm text-neutral-300">
-                Age: 20<br/>
-                Price: 50.5<br/>
-                Grade: A<br/>
+                Age: 20<br />
+                Price: 50.5<br />
+                Grade: A<br />
                 Salary: 25000.75
               </div>
             </div>
           </section>
         </article>
+
         {/* Next Lesson Button */}
         <div className="mt-20 flex justify-end border-t border-neutral-800 pt-10">
           <Link href="/langroadmap/cpp/io">
@@ -204,6 +228,24 @@ export default function VariablesLesson() {
           </Link>
         </div>
       </main>
+
+      {/* Back to Top Button */}
+      <AnimatePresence>
+        {showTopBtn && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={goToTop}
+            className="fixed bottom-8 right-8 z-50 p-4 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 transition-colors border border-red-500/20"
+            aria-label="Back to top"
+          >
+            <ArrowUp className="w-6 h-6" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

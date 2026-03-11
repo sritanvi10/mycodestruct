@@ -1,10 +1,32 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, ArrowLeft, ExternalLink, Terminal, ChevronLeft } from "lucide-react";
+import { ArrowUp, ArrowRight, ArrowLeft, ChevronLeft } from "lucide-react";
 
 export default function InputOutput() {
+    const [showTopBtn, setShowTopBtn] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+        if (window.scrollY > 400) {
+            setShowTopBtn(true);
+        } else {
+            setShowTopBtn(false);
+        }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const goToTop = () => {
+        window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+        });
+    };
     return (
         <div className="min-h-screen bg-[#0a0a0a] text-[#e5e7eb] pb-20 font-sans">
             <main className="max-w-6xl mx-auto px-6 pt-16">
@@ -169,6 +191,23 @@ export default function InputOutput() {
 
                 </div>
             </main>
+            {/* Back to Top Button */}
+            <AnimatePresence>
+                {showTopBtn && (
+                <motion.button
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={goToTop}
+                    className="fixed bottom-8 right-8 z-50 p-4 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 transition-colors border border-red-500/20"
+                    aria-label="Back to top"
+                >
+                    <ArrowUp className="w-6 h-6" />
+                </motion.button>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
