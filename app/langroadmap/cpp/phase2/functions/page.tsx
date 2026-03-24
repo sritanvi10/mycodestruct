@@ -133,23 +133,30 @@ export default function FunctionsLesson() {
             <div className="space-y-8">
               {/* Type 1 */}
               <div className="p-6 bg-neutral-900/30 border border-neutral-800 rounded-2xl">
-                <h3 className="text-white text-xl font-bold mb-2">1. No Parameters</h3>
+                <h3 className="text-white text-xl font-bold mb-2">1. No Parameters and No return type</h3>
                 <p className="text-neutral-400 text-sm mb-4">Performs a predefined task without external input.</p>
                 <code className="text-blue-400 text-sm font-mono block bg-black p-3 rounded">void greet() &#123; <br/> &nbsp; cout &lt;&lt; "Hello!"; <br/> &#125;</code>
               </div>
 
               {/* Type 2 */}
               <div className="p-6 bg-neutral-900/30 border border-neutral-800 rounded-2xl">
-                <h3 className="text-white text-xl font-bold mb-2">2. With Parameters</h3>
+                <h3 className="text-white text-xl font-bold mb-2">2. With Parameters and No return type</h3>
                 <p className="text-neutral-400 text-sm mb-4">Accepts input values to perform dynamic operations.</p>
                 <code className="text-blue-400 text-sm font-mono block bg-black p-3 rounded">void square(int n) &#123; <br/> &nbsp; cout &lt;&lt; n * n; <br/>  &#125;</code>
               </div>
 
               {/* Type 3 */}
               <div className="p-6 bg-neutral-900/30 border border-neutral-800 rounded-2xl">
-                <h3 className="text-white text-xl font-bold mb-2">3. With Return Value</h3>
+                <h3 className="text-white text-xl font-bold mb-2">3. With Return Value and No Parameters</h3>
                 <p className="text-neutral-400 text-sm mb-4">Computes a result and sends it back to the caller using the <code>return</code> statement.</p>
-                <code className="text-blue-400 text-sm font-mono block bg-black p-3 rounded">int add(int a, int b) &#123;  <br/> &nbsp; return a + b; <br/>  &#125;</code>
+                <code className="text-blue-400 text-sm font-mono block bg-black p-3 rounded">int getAge() &#123;  <br/> &nbsp; return 25; <br/>  &#125;</code>
+              </div>
+
+              {/* Type 4 */}
+              <div className="p-6 bg-neutral-900/30 border border-neutral-800 rounded-2xl">
+                <h3 className="text-white text-xl font-bold mb-2">4. With Return Value and Parameters</h3>
+                <p className="text-neutral-400 text-sm mb-4">Accepts input values and computes a result to send back to the caller.</p>
+                <code className="text-blue-400 text-sm font-mono block bg-black p-3 rounded">int multiply(int x, int y) &#123;  <br/> &nbsp; return x * y; <br/>  &#125;</code>
               </div>
             </div>
           </section>
