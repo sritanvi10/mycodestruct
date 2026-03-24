@@ -125,38 +125,91 @@ export default function FunctionsLesson() {
           {/* 4. Types of Functions */}
           <section>
             <div className="flex items-center gap-3 mb-4">
-               <Code2 className="text-red-600 w-8 h-8" />
-               <h2 className="text-2xl font-bold text-white m-0">4. Types of Functions</h2>
+              <Code2 className="text-red-600 w-8 h-8" />
+              <h2 className="text-2xl font-bold text-white m-0">4. Types of Functions</h2>
             </div>
-            <p className="text-neutral-300 mb-8">Functions are classified by how they handle inputs and outputs.</p>
+            <p className="text-neutral-300 mb-8">Functions are classified by how they handle data flow: what they receive (parameters) and what they send back (return values).</p>
 
-            <div className="space-y-8">
+            <div className="space-y-12">
               {/* Type 1 */}
               <div className="p-6 bg-neutral-900/30 border border-neutral-800 rounded-2xl">
-                <h3 className="text-white text-xl font-bold mb-2">1. No Parameters and No return type</h3>
-                <p className="text-neutral-400 text-sm mb-4">Performs a predefined task without external input.</p>
-                <code className="text-blue-400 text-sm font-mono block bg-black p-3 rounded">void greet() &#123; <br/> &nbsp; cout &lt;&lt; "Hello!"; <br/> &#125;</code>
+                <h3 className="text-white text-xl font-bold mb-2">1. No Parameters and No Return Type</h3>
+                <p className="text-neutral-400 text-sm mb-4">This function is self-contained. It doesn't need external data and doesn't send anything back.</p>
+                <span className="text-sm text-red-500">Example:</span>
+                <div className="bg-black border border-neutral-800 rounded-lg p-5 font-mono text-sm leading-7 mb-4">
+                  <span className="text-red-500">void</span> <span className="text-yellow-400">greet</span>() &#123;<br/>
+                  &nbsp;&nbsp;cout &lt;&lt; <span className="text-orange-400">"Welcome to CodeStruct!"</span>;<br/>
+                  &#125;<br/><br/>
+                  <span className="text-red-500">int</span> <span className="text-yellow-400">main</span>() &#123;<br/>
+                  &nbsp;&nbsp;<span className="text-yellow-400">greet</span>(); <span className="text-neutral-500">// Just call it</span><br/>
+                  &nbsp;&nbsp;<span className="text-red-500">return</span> <span className="text-blue-400">0</span>;<br/>
+                  &#125;
+                </div>
+                <div className="p-3 bg-[#111] border border-neutral-800 rounded-lg font-mono text-xs text-neutral-300">
+                  <span className="text-neutral-500 uppercase block mb-1">Output</span>
+                  Welcome to CodeStruct!
+                </div>
               </div>
 
               {/* Type 2 */}
               <div className="p-6 bg-neutral-900/30 border border-neutral-800 rounded-2xl">
-                <h3 className="text-white text-xl font-bold mb-2">2. With Parameters and No return type</h3>
-                <p className="text-neutral-400 text-sm mb-4">Accepts input values to perform dynamic operations.</p>
-                <code className="text-blue-400 text-sm font-mono block bg-black p-3 rounded">void square(int n) &#123; <br/> &nbsp; cout &lt;&lt; n * n; <br/>  &#125;</code>
+                <h3 className="text-white text-xl font-bold mb-2">2. With Parameters and No Return Type</h3>
+                <p className="text-neutral-400 text-sm mb-4">Accepts data to work with, but performs the action (like printing) internally.</p>
+                <span className="text-sm text-red-500">Example:</span>
+                <div className="bg-black border border-neutral-800 rounded-lg p-5 font-mono text-sm leading-7 mb-4">
+                  <span className="text-red-500">void</span> <span className="text-yellow-400">printSquare</span>(<span className="text-red-500">int</span> n) &#123;<br/>
+                  &nbsp;&nbsp;cout &lt;&lt; <span className="text-orange-400">"Square: "</span> &lt;&lt; n * n;<br/>
+                  &#125;<br/><br/>
+                  <span className="text-red-500">int</span> <span className="text-yellow-400">main</span>() &#123;<br/>
+                  &nbsp;&nbsp;<span className="text-yellow-400">printSquare</span>(<span className="text-blue-400">5</span>);<br/>
+                  &nbsp;&nbsp;<span className="text-red-500">return</span> <span className="text-blue-400">0</span>;<br/>
+                  &#125;
+                </div>
+                <div className="p-3 bg-[#111] border border-neutral-800 rounded-lg font-mono text-xs text-neutral-300">
+                  <span className="text-neutral-500 uppercase block mb-1">Output</span>
+                  Square: 25
+                </div>
               </div>
 
               {/* Type 3 */}
               <div className="p-6 bg-neutral-900/30 border border-neutral-800 rounded-2xl">
                 <h3 className="text-white text-xl font-bold mb-2">3. With Return Value and No Parameters</h3>
-                <p className="text-neutral-400 text-sm mb-4">Computes a result and sends it back to the caller using the <code>return</code> statement.</p>
-                <code className="text-blue-400 text-sm font-mono block bg-black p-3 rounded">int getAge() &#123;  <br/> &nbsp; return 25; <br/>  &#125;</code>
+                <p className="text-neutral-400 text-sm mb-4">Doesn't need input, but "hands over" a result to the caller to be used later.</p>
+                <span className="text-sm text-red-500">Example:</span>
+                <div className="bg-black border border-neutral-800 rounded-lg p-5 font-mono text-sm leading-7 mb-4">
+                  <span className="text-red-500">int</span> <span className="text-yellow-400">getPiApproximation</span>() &#123;<br/>
+                  &nbsp;&nbsp;<span className="text-red-500">return</span> <span className="text-blue-400">3</span>;<br/>
+                  &#125;<br/><br/>
+                  <span className="text-red-500">int</span> <span className="text-yellow-400">main</span>() &#123;<br/>
+                  &nbsp;&nbsp;<span className="text-red-500">int</span> val = <span className="text-yellow-400">getPiApproximation</span>(); <span className="text-neutral-500">// Store the result</span><br/>
+                  &nbsp;&nbsp;cout &lt;&lt; <span className="text-orange-400">"Value: "</span> &lt;&lt; val;<br/>
+                  &nbsp;&nbsp;<span className="text-red-500">return</span> <span className="text-blue-400">0</span>;<br/>
+                  &#125;
+                </div>
+                <div className="p-3 bg-[#111] border border-neutral-800 rounded-lg font-mono text-xs text-neutral-300">
+                  <span className="text-neutral-500 uppercase block mb-1">Output</span>
+                  Value: 3
+                </div>
               </div>
 
               {/* Type 4 */}
               <div className="p-6 bg-neutral-900/30 border border-neutral-800 rounded-2xl">
                 <h3 className="text-white text-xl font-bold mb-2">4. With Return Value and Parameters</h3>
-                <p className="text-neutral-400 text-sm mb-4">Accepts input values and computes a result to send back to the caller.</p>
-                <code className="text-blue-400 text-sm font-mono block bg-black p-3 rounded">int multiply(int x, int y) &#123;  <br/> &nbsp; return x * y; <br/>  &#125;</code>
+                <p className="text-neutral-400 text-sm mb-4">The most flexible type. It takes data, processes it, and returns the result.</p>
+                <span className="text-sm text-red-500">Example:</span>
+                <div className="bg-black border border-neutral-800 rounded-lg p-5 font-mono text-sm leading-7 mb-4">
+                  <span className="text-red-500">int</span> <span className="text-yellow-400">multiply</span>(<span className="text-red-500">int</span> x, <span className="text-red-500">int</span> y) &#123;<br/>
+                  &nbsp;&nbsp;<span className="text-red-500">return</span> x * y;<br/>
+                  &#125;<br/><br/>
+                  <span className="text-red-500">int</span> <span className="text-yellow-400">main</span>() &#123;<br/>
+                  &nbsp;&nbsp;cout &lt;&lt; <span className="text-orange-400">"Result: "</span> &lt;&lt; <span className="text-yellow-400">multiply</span>(<span className="text-blue-400">10</span>, <span className="text-blue-400">4</span>);<br/>
+                  &nbsp;&nbsp;<span className="text-red-500">return</span> <span className="text-blue-400">0</span>;<br/>
+                  &#125;
+                </div>
+                <div className="p-3 bg-[#111] border border-neutral-800 rounded-lg font-mono text-xs text-neutral-300">
+                  <span className="text-neutral-500 uppercase block mb-1">Output</span>
+                  Result: 40
+                </div>
               </div>
             </div>
           </section>

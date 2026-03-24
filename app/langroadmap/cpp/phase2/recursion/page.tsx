@@ -110,7 +110,7 @@ export default function RecursionLesson() {
           <section>
             <div className="flex items-center gap-3 mb-4">
                <Terminal className="text-red-600 w-8 h-8" />
-               <h2 className="text-3xl font-bold text-white italic m-0">4. General Syntax of Recursion</h2>
+               <h2 className="text-3xl font-bold text-white italic m-0">4. General Syntax of Recursion using example</h2>
             </div>
             
             <div className="bg-black border border-neutral-800 rounded-lg p-6 font-mono text-sm overflow-x-auto leading-7 shadow-2xl mb-4">
