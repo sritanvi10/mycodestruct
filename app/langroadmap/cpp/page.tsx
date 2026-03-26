@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Code2, Terminal, Cpu, Zap, ChevronLeft, ArrowRight } from "lucide-react";
 import ActivityHeatmap from "@/components/ui/ActivityHeatmap";
+import { label } from "framer-motion/client";
 
 export default function CppRoadmap() {
   const steps = [
@@ -34,10 +35,12 @@ export default function CppRoadmap() {
       phase: "phase3",
       icon: <Zap className="w-6 h-6 text-red-500" />,
       items: [
-        { label: "Vectors & Iterators", slug: "vectors" },
-        { label: "Maps & Sets", slug: "maps-sets" },
-        { label: "Pairs & Tuples", slug: "pairs" },
-        { label: "Sorting Algorithms", slug: "sorting" },
+        { label: "Vector, List & Iterators", slug: "vectors" },
+        { label: "Maps", slug: "maps" },
+        { label: "Sets", slug: "sets" },
+        { label: "Pairs & Tuples", slug: "pairs-tuples" },
+        { label: "Stack, Queue, Deque & Priority Queues", slug: "stack-queue-deque-priority-queues" },
+        { label: "Useful Functions & Sorting Algorithms", slug: "useful-functions-sorting-algorithms" },
       ],
     },
     {
