@@ -369,7 +369,7 @@ export default function STLFullLesson() {
             </Link>
 
             {/* Next Lesson Button */}
-            <Link href="/langroadmap/cpp/phase3/maps-sets">
+            <Link href="/langroadmap/cpp/phase3/maps">
                 <motion.div
                     whileHover={{ x: 5 }}
                     whileTap={{ scale: 0.95 }}
@@ -378,7 +378,7 @@ export default function STLFullLesson() {
                     <div className="text-right">
                         <span className="text-xs text-neutral-500 uppercase tracking-widest block mb-1">Next Lesson</span>
                         <span className="text-xl font-bold text-white group-hover:text-red-500 transition-colors">
-                            Maps, Sets.. in C++
+                            Maps in C++
                         </span>
                     </div>
                     <div className="w-12 h-12 rounded-full border border-neutral-700 flex items-center justify-center group-hover:border-red-500 transition-colors">
