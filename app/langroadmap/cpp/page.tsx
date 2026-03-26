@@ -34,10 +34,10 @@ export default function CppRoadmap() {
       phase: "phase3",
       icon: <Zap className="w-6 h-6 text-red-500" />,
       items: [
-        { label: "Vectors & Iterators", slug: "vectors" },
-        { label: "Maps & Sets", slug: "maps-sets" },
-        { label: "Pairs & Tuples", slug: "pairs" },
-        { label: "Sorting Algorithms", slug: "sorting" },
+        { label: "Vector, List & Iterators", slug: "vectors" },
+        { label: "Pairs, Tuples, Maps & Sets", slug: "pairs-tuples-maps-sets" },
+        { label: "Stack, Queue, Deque & Priority Queues", slug: "stack-queue-deque-priority-queues" },
+        { label: "Useful Functions & Sorting Algorithms", slug: "useful-functions-sorting-algorithms" },
       ],
     },
     {

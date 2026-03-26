@@ -248,7 +248,7 @@ export default function ArraysStringsLesson() {
             </motion.div>
           </Link>
 
-          <Link href="/langroadmap/cpp/phase3/pointers" className="w-full md:w-auto">
+          <Link href="/langroadmap/cpp/phase2/pointers" className="w-full md:w-auto">
             <motion.div whileHover={{ x: 5 }} whileTap={{ scale: 0.95 }} className="flex items-center gap-4 group cursor-pointer text-right justify-end">
               <div>
                 <span className="text-xs text-neutral-500 uppercase tracking-widest block mb-1">Next Lesson</span>
