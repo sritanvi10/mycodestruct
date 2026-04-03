@@ -45,7 +45,7 @@ export default function Page() {
             {/* Article Header */}
             <header className="mb-12 border-b border-neutral-800 pb-10">
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                    Maps, Sets, Pairs & Tuples <span className="text-red-600">in C++ STL_</span>
+                    Pairs & Tuples <span className="text-red-600">in C++ STL_</span>
                 </h1>
             </header>
 
