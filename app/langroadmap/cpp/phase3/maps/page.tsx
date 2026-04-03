@@ -45,7 +45,7 @@ export default function Page() {
             {/* Article Header */}
             <header className="mb-12 border-b border-neutral-800 pb-10">
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                    Maps, Sets, Pairs & Tuples <span className="text-red-600">in C++ STL_</span>
+                    Maps <span className="text-red-600">in C++ STL_</span>
                 </h1>
             </header>
 
@@ -477,6 +477,28 @@ export default function Page() {
                     &nbsp;&nbsp;cout &lt;&lt; <span className="text-orange-400">"Size of the multimap after clearing all the elements: "</span> &lt;&lt; mp.<span className="text-yellow-400">size</span>();  <span className="text-neutral-500">//Print the size of the map</span><br/>
                     &nbsp;&nbsp;<span className="text-red-500">return</span> <span className="text-blue-400">0</span>;<br/>
                     &#125;
+                </div>
+                <h3 className="text-xl font-bold text-white mt-8 mb-4 uppercase tracking-widest text-red-500 text-left">Output:</h3>
+                <div className="p-4 bg-[#111] border border-neutral-800 rounded-lg font-mono text-sm text-neutral-300 mb-12 text-left">
+                Elements present in the multimap: <br/>
+                Key	Element<br/>
+                1	10<br/>
+                2	20<br/>
+                3	30<br/>
+                4	40<br/>
+                4	40<br/>
+                5	50<br/>
+                2 is present in multimap<br/>
+                Elements after deleting the first element: <br/>
+                Key	Element<br/>
+                2	20<br/>
+                3	30<br/>
+                4	40<br/>
+                4	40<br/>
+                5	50<br/>
+                The size of the multimap is: 5<br/>
+                The multimap is not empty <br/>
+                Size of the multimap after clearing all the elements: 0
                 </div>
 
                 <h3 className="text-xl font-bold text-white mt-8 mb-4 text-red-500">Other functions:</h3>

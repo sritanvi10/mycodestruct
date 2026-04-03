@@ -45,7 +45,7 @@ export default function Page() {
             {/* Article Header */}
             <header className="mb-12 border-b border-neutral-800 pb-10">
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                    Maps, Sets, Pairs & Tuples <span className="text-red-600">in C++ STL_</span>
+                    Sets <span className="text-red-600">in C++ STL_</span>
                 </h1>
             </header>
 
@@ -484,45 +484,45 @@ export default function Page() {
                 </section>
             </article>
             {/* Navigation Buttons */}
-        <div className="mt-20 flex justify-between border-t border-neutral-800 pt-10">
-            {/* Previous Lesson Button */}
-            <Link href="/langroadmap/cpp/phase3/maps">
-                <motion.div
-                    whileHover={{ x: -5 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-4 group cursor-pointer text-left"
-                >
-                    <div className="w-12 h-12 rounded-full border border-neutral-700 flex items-center justify-center group-hover:border-red-500 transition-colors">
-                        <ChevronLeft className="w-5 h-5 text-red-500" />
-                    </div>
-                    <div className="text-left">
-                        <span className="text-xs text-neutral-500 uppercase tracking-widest block mb-1">Previous Lesson</span>
-                        <span className="text-xl font-bold text-white group-hover:text-red-500 transition-colors">
-                            Maps in C++
-                        </span>
-                    </div>
-                </motion.div>
-            </Link>
+            <div className="mt-20 flex justify-between border-t border-neutral-800 pt-10">
+                {/* Previous Lesson Button */}
+                <Link href="/langroadmap/cpp/phase3/maps">
+                    <motion.div
+                        whileHover={{ x: -5 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex items-center gap-4 group cursor-pointer text-left"
+                    >
+                        <div className="w-12 h-12 rounded-full border border-neutral-700 flex items-center justify-center group-hover:border-red-500 transition-colors">
+                            <ChevronLeft className="w-5 h-5 text-red-500" />
+                        </div>
+                        <div className="text-left">
+                            <span className="text-xs text-neutral-500 uppercase tracking-widest block mb-1">Previous Lesson</span>
+                            <span className="text-xl font-bold text-white group-hover:text-red-500 transition-colors">
+                                Maps in C++
+                            </span>
+                        </div>
+                    </motion.div>
+                </Link>
 
-            {/* Next Lesson Button */}
-            <Link href="/langroadmap/cpp/phase3/pairs-tuples">
-                <motion.div
-                    whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-4 group cursor-pointer"
-                >
-                    <div className="text-right">
-                        <span className="text-xs text-neutral-500 uppercase tracking-widest block mb-1">Next Lesson</span>
-                        <span className="text-xl font-bold text-white group-hover:text-red-500 transition-colors">
-                            Pairs, Tuples in C++
-                        </span>
-                    </div>
-                    <div className="w-12 h-12 rounded-full border border-neutral-700 flex items-center justify-center group-hover:border-red-500 transition-colors">
-                        <ArrowRight className="w-5 h-5 text-red-500" />
-                    </div>
-                </motion.div>
-            </Link>
-        </div>
+                {/* Next Lesson Button */}
+                <Link href="/langroadmap/cpp/phase3/pairs-tuples">
+                    <motion.div
+                        whileHover={{ x: 5 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex items-center gap-4 group cursor-pointer"
+                    >
+                        <div className="text-right">
+                            <span className="text-xs text-neutral-500 uppercase tracking-widest block mb-1">Next Lesson</span>
+                            <span className="text-xl font-bold text-white group-hover:text-red-500 transition-colors">
+                                Pairs, Tuples in C++
+                            </span>
+                        </div>
+                        <div className="w-12 h-12 rounded-full border border-neutral-700 flex items-center justify-center group-hover:border-red-500 transition-colors">
+                            <ArrowRight className="w-5 h-5 text-red-500" />
+                        </div>
+                    </motion.div>
+                </Link>
+            </div>
 
         {/* Back to Top */}
         <AnimatePresence>
