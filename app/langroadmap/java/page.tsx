@@ -1,0 +1,147 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowLeft, Code2, Terminal, Cpu, Zap, ChevronLeft, ArrowRight } from "lucide-react";
+import ActivityHeatmap from "@/components/ui/ActivityHeatmap";
+
+export default function JavaRoadmap() {
+  const steps = [
+    {
+      title: "Phase 1: Basics & Foundation",
+      phase: "phase1",
+      icon: <Terminal className="w-6 h-6 text-red-500" />,
+      items: [
+        { label: "Variables & Data Types", slug: "variables" },
+        { label: "Input/Output (Scanner, BufferedReader)", slug: "io" },
+        { label: "Operators & Expressions", slug: "operators" },
+        { label: "Control Flow (If/Else, Loops)", slug: "control-flow" },
+      ],
+    },
+    {
+      title: "Phase 2: Core Logic",
+      phase: "phase2",
+      icon: <Code2 className="w-6 h-6 text-red-500" />,
+      items: [
+        { label: "Methods (Functions) & Parameters", slug: "methods" },
+        { label: "Recursion", slug: "recursion" },
+        { label: "Arrays & Strings", slug: "arrays-strings" },
+        { label: "References (Objects) & Basics of Memory", slug: "references-memory" },
+      ],
+    },
+    {
+      title: "Phase 3: Collections Framework (Java STL)",
+      phase: "phase3",
+      icon: <Zap className="w-6 h-6 text-red-500" />,
+      items: [
+        { label: "ArrayList, LinkedList & Iterators", slug: "arraylist-linkedlist" },
+        { label: "HashMap, TreeMap", slug: "hashmap-treemap" },
+        { label: "HashSet, TreeSet", slug: "hashset-treeset" },
+        { label: "Pair (via AbstractMap / custom class)", slug: "pairs" },
+        { label: "Stack, Queue, Deque & PriorityQueue", slug: "stack-queue-deque-priorityqueue" },
+        { label: "Collections.sort(), Arrays.sort()", slug: "sorting" },
+      ],
+    },
+    {
+      title: "Phase 4: Advanced Concepts",
+      phase: "phase4",
+      icon: <Cpu className="w-6 h-6 text-red-500" />,
+      items: [
+        { label: "OOP (Class, Object, Inheritance, Polymorphism)", slug: "oop" },
+        { label: "Exception Handling", slug: "exception-handling" },
+        { label: "Generics", slug: "generics" },
+        { label: "File Handling (File, BufferedReader, FileWriter)", slug: "file-handling" },
+      ],
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-black text-white selection:bg-red-500/30 overflow-x-hidden relative">
+      {/* Brand Header */}
+      <Link href="/">
+        <motion.div
+          className="absolute top-8 left-8 z-50 flex items-center gap-2 cursor-pointer group"
+        >
+          <ChevronLeft className="w-4 h-4 text-red-600" />
+          <span className="text-xl font-black tracking-tighter text-red-600 uppercase">
+            CodeStruct_
+          </span>
+        </motion.div>
+      </Link>
+
+      {/* Background Ambient Glow */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-red-900/10 blur-[120px] -z-10" />
+
+      <main className="max-w-4xl mx-auto px-6 pt-20 pb-32">
+        {/* Navigation Section */}
+        <Link
+          href="/languageoptions"
+          className="group flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mb-12 text-xs uppercase font-bold tracking-[0.2em]"
+        >
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to Languages
+        </Link>
+
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-20"
+        >
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
+            Java <span className="text-red-600">ROADMAP_</span>
+          </h1>
+          <section className="mb-7">
+            <ActivityHeatmap storageKey="java-activity" />
+          </section>
+          <p className="text-neutral-400 text-lg max-w-2xl leading-relaxed">
+            A powerhouse for Competitive Programming. This structured path takes you from
+            basic syntax to mastering the Collections Framework.
+          </p>
+          <Link href="/langroadmap/java/phase1/variables">
+            <button className="mt-8 px-8 py-3 bg-red-600 rounded-full font-bold cursor-pointer hover:scale-105 transition-transform">
+              Start Your Journey
+            </button>
+          </Link>
+        </motion.div>
+
+        {/* Roadmap Timeline */}
+        <div className="relative border-l border-neutral-800 ml-4 md:ml-6">
+          {steps.map((step, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              viewport={{ once: true }}
+              className="mb-16 ml-10 relative"
+            >
+              {/* Glowing Dot on the Line */}
+              <div className="absolute -left-[49px] top-1 w-4 h-4 rounded-full bg-red-600 shadow-[0_0_15px_rgba(220,38,38,0.6)] border-4 border-black" />
+
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-2 bg-neutral-900 rounded-lg border border-white/5">
+                  {step.icon}
+                </div>
+                <h3 className="text-2xl font-bold uppercase tracking-tight">{step.title}</h3>
+              </div>
+
+              {/* Grid of Lesson Links */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {step.items.map((item, i) => (
+                  <Link
+                    key={i}
+                    href={`/langroadmap/java/${step.phase}/${item.slug}`}
+                    className="p-4 bg-neutral-950 border border-neutral-900 rounded-xl text-neutral-400 hover:text-white hover:border-red-900/50 transition-all cursor-pointer group/item flex justify-between items-center"
+                  >
+                    <span className="font-medium">{item.label}</span>
+                    <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-red-600" />
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </main>
+    </div>
+  );
+}
